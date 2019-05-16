@@ -1,0 +1,126 @@
+<template>
+  <div>
+    <header>
+      <div class="container header">
+        <strong>
+          <g-link to="/">{{ $static.metaData.siteName }}</g-link>
+        </strong>
+        <nav class="nav">
+          <g-link class="nav__link" to="/">Home</g-link>
+          <g-link class="nav__link" to="/about">About</g-link>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <slot/>
+    </main>
+    <footer>
+      <p>All Copyright Reserved 2019</p>
+      <p><a href="https://twitter.com/GLamusse">@GLamusse</a></p>
+    </footer>
+  </div>
+</template>
+
+<static-query>
+query {
+  metaData {
+    siteName
+  }
+}
+</static-query>
+
+<style>
+body {
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  margin:0;
+  padding:0;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+  color: #3F51B5;
+}
+
+header a {
+  font-weight: 400;
+  color: #3F51B5;
+}
+
+header a:hover, header a.active--exact {
+  color: #2196F3;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.nav__link {
+  margin-left: 1rem;
+}
+
+main {
+  min-height: calc(100vh - 228px);
+  margin-top: 20px;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #E8EAF6;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+figure img {
+  width: 100%;
+}
+
+.post_card {
+  flex-basis: calc(33% - 24px);
+  margin: 24px 12px;
+  transition: box-shadow .3s ease-in-out, transform .3s ease-in-out;
+  border-radius: 8px;
+  border: 1px solid #dadce0;
+}
+
+.post_card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 2px 4px 0 rgba(60, 64, 67, .3), 0 6px 11px 5px rgba(60, 64, 67, .15);
+}
+
+.post_card:active {
+  box-shadow: 0;
+}
+
+.post_card figure {
+  margin: 0;
+  border-radius: 8px;
+}
+
+.post_card figure img {
+  border-bottom: 1px solid #999;
+  border-radius: 8px;
+}
+
+.post_card figure figcaption {
+  padding: 4px 10px;
+  color: #37474F;
+}
+</style>
