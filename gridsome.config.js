@@ -3,7 +3,6 @@
 
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
-const { db } = require('gridsome-source-firestore')
 
 module.exports = {
   siteName: 'Gridsome+Firestore Starter',
@@ -11,31 +10,33 @@ module.exports = {
     {
       use: 'gridsome-source-firestore',
       options: {
+        // Update this with your service credentials file
+        credentials: require('./gridsome-firestore-starter-firebase-adminsdk-8d62h-62hf8c6dis.json'),
         debug: true,
         collections: [
           {
-            ref: db.collection('posts').where('status', '==', '1'),
+            ref: (db => db.collection('posts').where('status', '==', '1')),
             slug: 'title',
             children: [{
-              ref: (postDoc) => {
+              ref: (db, postDoc) => {
                 return postDoc.ref.collection('comments').limit(10)
               }
             }]
           },
           {
-            ref: db.collection('topics'),
+            ref: (db => db.collection('topics')),
             slug: (doc, slugify) => {
               return `/topics/${slugify(doc.data.name)}`
             }
           },
           {
-            ref: db.collection('tags'),
+            ref: (db => db.collection('tags')),
             slug: (doc, slugify) => {
               return `/tags/${slugify(doc.data.name)}`
             },
           },
           {
-            ref: db.collection('authors'),
+            ref: (db => db.collection('authors')),
             slug: (doc, slugify) => {
               return `/authors/${slugify(doc.data.name)}`
             }

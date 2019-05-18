@@ -7,6 +7,6 @@
   },
   "dependencies": {
     "gridsome": "^0.6.0",
-    "gridsome-source-firestore": "^0.8.1"
+    "gridsome-source-firestore": "^0.9.0"
   }
 }
