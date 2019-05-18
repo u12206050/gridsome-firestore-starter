@@ -1,5 +1,7 @@
 # Firestore starter for Gridsome
 
+[DEMO](https://gridsome-firestore-source.netlify.com/)
+
 This is an example blog of how to use Gridsome and the [Firestore Source plugin](https://gridsome.org/plugins/gridsome-source-firestore) to create a static site:
 
 `gridsome new firestore-blog https://github.com/u12206050/gridsome-firestore-starter`.
