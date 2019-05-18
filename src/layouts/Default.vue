@@ -102,6 +102,10 @@ footer {
   align-items: center;
 }
 
+.row.center {
+  justify-content: center;
+}
+
 .row.links {
   justify-content: center;
 }

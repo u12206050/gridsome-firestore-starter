@@ -10,7 +10,7 @@
     </ul>
     <hr>
     <h2>Popular Topics</h2>
-    <div class="row">
+    <div class="row center">
       <template v-for="topic in topics">
         <g-link class="topic__card" :key="topic.id" :to="topic.path">
           <g-image :src="topic.image" width="300" height="200" fit="outside"></g-image>
@@ -18,11 +18,30 @@
         </g-link>
       </template>
     </div>
+    <h2>Latest Post</h2>
+    <div class="row center">
+      <g-link v-if="latest" :to="latest.path" class="post_card">
+        <figure>
+          <g-image :src="latest.image" width="300" height="300" :alt="latest.title" />
+          <figcaption>{{latest.title}}</figcaption>
+        </figure>
+      </g-link>
+    </div>
   </Layout>
 </template>
 
 <page-query>
 query Topics {
+  allFirePosts (limit: 1, sort: { by: "created", order: DESC} ) {
+    edges {
+      node {
+        id
+        title
+        image (width: 300, height: 300)
+        path
+      }
+    }
+  }
   allFireTopics {
     edges {
       node {
@@ -47,6 +66,9 @@ export default {
   computed: {
     topics() {
       return this.$page.allFireTopics.edges && this.$page.allFireTopics.edges.map(e => e.node)
+    },
+    latest() {
+      return this.$page.allFirePosts.edges && this.$page.allFirePosts.edges.length && this.$page.allFirePosts.edges[0].node
     }
   }
 }
@@ -65,6 +87,7 @@ p pre, li pre {
 
 .topic__card {
   position: relative;
+  margin: 30px;
   width: 300px;
   height: 200px;
 }
