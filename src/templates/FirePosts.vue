@@ -10,7 +10,8 @@
       <div v-html="post.body"></div>
 
       <div class="footer">
-        <div class="row">
+        <div class="row links">
+          <g-link v-if="post.topic" :to="post.topic.path" class="topic">{{post.topic.name}}</g-link>
           <g-link v-for="tag in post.tags" :key="tag.name" :to="tag.path">{{tag.name}}</g-link>
         </div>
       </div>
@@ -27,6 +28,10 @@ query Post ($id: String!) {
     body
     image (width: 800, height: 450)
     tags {
+      name
+      path
+    }
+    topic {
       name
       path
     }

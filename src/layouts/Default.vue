@@ -5,9 +5,12 @@
         <strong>
           <g-link to="/">{{ $static.metaData.siteName }}</g-link>
         </strong>
-        <nav class="nav">
+        <nav class="nav row">
           <g-link class="nav__link" to="/">Home</g-link>
           <g-link class="nav__link" to="/about">About</g-link>
+          <a class="github__link" href="https://github.com/u12206050/gridsome-source-firestore">
+            <g-image width="20" height="20" src="../assets/github-logo.svg" />
+          </a>
         </nav>
       </div>
     </header>
@@ -70,6 +73,17 @@ header a:hover, header a.active--exact {
   margin-left: 1rem;
 }
 
+.github__link {
+  display: flex;
+  margin-left: 1rem;
+  align-content: center;
+  color: #37474F;
+}
+.github__link img {
+  width: 2rem;
+  height: 2rem;
+}
+
 main {
   min-height: calc(100vh - 228px);
   margin-top: 20px;
@@ -86,6 +100,23 @@ footer {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.row.links {
+  justify-content: center;
+}
+.row.links a {
+  margin: 6px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  background: #eee;
+  color: #3F51B5;
+  font-weight: 600;
+}
+.row.links a.topic {
+  padding: 4px 8px;
+  background: #3F51B5;
+  color: #fff;
 }
 
 figure img {
