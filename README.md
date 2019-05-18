@@ -15,6 +15,3 @@ This is an example blog of how to use Gridsome and the [Firestore Source plugin]
 3. Create `.env` and add your Firestore credentials
 4. `gridsome develop` to start a local dev server at `http://localhost:8080`
 5. Happy coding 🎉🙌
-
-
-To run the example, copy the credentials from `.env.example` into `.env`
